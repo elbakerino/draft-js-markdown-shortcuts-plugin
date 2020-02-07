@@ -1,4 +1,5 @@
 import React from 'react';
+import { getDefaultKeyBinding } from "draft-js";
 import {
   blockRenderMap as checkboxBlockRenderMap, CheckableListItem, CheckableListItemUtils, CHECKABLE_LIST_ITEM
 } from 'draft-js-checkable-list-item';
@@ -117,14 +118,17 @@ const createMarkdownShortcutsPlugin = (config = { insertEmptyBlockOnReturnWithMo
           return null;
       }
     },
-    onTab(ev, { getEditorState, setEditorState }) {
-      const editorState = getEditorState();
-      const newEditorState = adjustBlockDepth(editorState, ev);
-      if (newEditorState !== editorState) {
-        setEditorState(newEditorState);
-        return 'handled';
+    keyBindingFn(ev, { getEditorState, setEditorState }) {
+      if (ev.key === "Tab") {
+        const editorState = getEditorState();
+        const newEditorState = adjustBlockDepth(editorState, ev);
+        if (newEditorState !== editorState) {
+          setEditorState(newEditorState);
+          return 'handled';
+        }
+        return 'not-handled';
       }
-      return 'not-handled';
+      return getDefaultKeyBinding(ev);
     },
     handleReturn(ev, editorState, { setEditorState }) {
       const newEditorState = checkReturnForState(editorState, ev, config);
