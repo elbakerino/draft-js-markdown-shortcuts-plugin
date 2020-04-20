@@ -1,6 +1,6 @@
 {
-  "name": "draft-js-markdown-shortcuts-plugin",
-  "version": "0.6.0",
+  "name": "draft-js-md-keyboard-plugin",
+  "version": "0.6.3",
   "description": "A DraftJS plugin for supporting Markdown syntax shortcuts",
   "main": "lib/index.js",
   "scripts": {
@@ -17,8 +17,7 @@
     "test:coverage": "node_modules/.bin/nyc --require babel-core/register npm run test:mocha",
     "test:mocha": "mocha --opts .mocha.opts $(find src -name '*-test.js')",
     "test:watch": "npm test | npm run watch",
-    "watch": "npm-watch",
-    "postinstall": "opencollective postinstall"
+    "watch": "npm-watch"
   },
   "watch": {
     "test": {
@@ -62,7 +61,7 @@
     "css-loader": "^0.26.0",
     "css-modules-require-hook": "^4.0.5",
     "dirty-chai": "^1.2.2",
-    "draft-js-plugins-editor": "2.0.4",
+    "draft-js-plugins-editor": "^2.0.4",
     "draft-js-prism": "^1.0.5",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -113,8 +112,7 @@
     "decorate-component-with-props": "^1.1.0",
     "draft-js": "~0.11.0",
     "draft-js-checkable-list-item": "^3.0.1",
-    "immutable": "~3.8.2",
-    "opencollective": "^1.0.3"
+    "immutable": "~3.8.2"
   },
   "collective": {
     "type": "opencollective",
